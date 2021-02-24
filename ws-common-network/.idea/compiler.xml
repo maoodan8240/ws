@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ws-common-network" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="ws-common-aggregator" target="1.5" />
+      <module name="ws-common-mongoDb" target="1.8" />
+      <module name="ws-common-network" target="1.5" />
+      <module name="ws-common-redis" target="1.8" />
+      <module name="ws-common-table" target="1.8" />
+      <module name="ws-common-utils" target="1.8" />
+      <module name="ws-maven-aggregator" target="1.5" />
+      <module name="ws-y8-aggregator" target="1.5" />
+      <module name="y8-aggregator" target="1.5" />
+      <module name="y8-clusterCenterServer" target="1.8" />
+      <module name="y8-gameServer" target="1.8" />
+      <module name="y8-gatewayServer" target="1.8" />
+      <module name="y8-loginServer" target="1.8" />
+      <module name="y8-mongodbRedisServer" target="1.8" />
+      <module name="y8-particularFunctionServer" target="1.8" />
+      <module name="y8-relationship" target="1.8" />
+      <module name="y8-sdk" target="1.8" />
+      <module name="y8-thirdPartyServer" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

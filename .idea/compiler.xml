@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ws-common-network" />
+        <module name="ws-common-mongoDb" />
+        <module name="ws-common-table" />
+        <module name="ws-common-redis" />
+        <module name="ws-common-utils" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ws-common-aggregator" target="1.5" />
+      <module name="ws-common-mongoDb" target="1.8" />
+      <module name="ws-common-network" target="1.8" />
+      <module name="ws-common-network (1)" target="1.8" />
+      <module name="ws-common-redis" target="1.8" />
+      <module name="ws-common-table" target="1.8" />
+      <module name="ws-common-utils" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

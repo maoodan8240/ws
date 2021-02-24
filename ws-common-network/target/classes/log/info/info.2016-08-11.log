@@ -1,0 +1,69 @@
+11:21:59.242 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x0b5473ec] REGISTERED
+11:21:59.244 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x0b5473ec] BIND: /192.168.0.56:18080
+11:21:59.245 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x0b5473ec, L:/192.168.0.56:18080] ACTIVE
+11:22:15.613 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x0b5473ec, L:/192.168.0.56:18080] RECEIVED: [id: 0xbdc495bc, L:/192.168.0.56:18080 - R:/192.168.0.56:34810]
+11:22:51.770 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x0b5473ec, L:/192.168.0.56:18080] RECEIVED: [id: 0xe8da39cf, L:/192.168.0.56:18080 - R:/192.168.0.56:34820]
+11:27:50.328 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x71bfcd9f] REGISTERED
+11:27:50.329 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x71bfcd9f] BIND: /192.168.0.56:18080
+11:27:50.332 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x71bfcd9f, L:/192.168.0.56:18080] ACTIVE
+11:28:09.762 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x71bfcd9f, L:/192.168.0.56:18080] RECEIVED: [id: 0x01dde3ab, L:/192.168.0.56:18080 - R:/192.168.0.56:34910]
+11:38:15.146 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xa40eb6f5] REGISTERED
+11:38:15.147 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xa40eb6f5] BIND: /192.168.0.56:18080
+11:38:15.148 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xa40eb6f5, L:/192.168.0.56:18080] ACTIVE
+11:38:19.471 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xa40eb6f5, L:/192.168.0.56:18080] RECEIVED: [id: 0xfca1356f, L:/192.168.0.56:18080 - R:/192.168.0.56:34976]
+11:39:17.109 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x5bea593c] REGISTERED
+11:39:17.111 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x5bea593c] BIND: /192.168.0.56:18080
+11:39:17.112 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x5bea593c, L:/192.168.0.56:18080] ACTIVE
+11:39:20.370 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x5bea593c, L:/192.168.0.56:18080] RECEIVED: [id: 0x59b022fa, L:/192.168.0.56:18080 - R:/192.168.0.56:34992]
+11:39:50.815 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xa21f5f42] REGISTERED
+11:39:50.817 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xa21f5f42] BIND: /192.168.0.56:18080
+11:39:50.819 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xa21f5f42, L:/192.168.0.56:18080] ACTIVE
+11:40:10.017 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xa21f5f42, L:/192.168.0.56:18080] RECEIVED: [id: 0x57f9629e, L:/192.168.0.56:18080 - R:/192.168.0.56:35010]
+11:50:32.195 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x2494cfad] REGISTERED
+11:50:32.196 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x2494cfad] BIND: /192.168.0.56:18080
+11:50:32.197 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x2494cfad, L:/192.168.0.56:18080] ACTIVE
+11:51:06.762 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x2494cfad, L:/192.168.0.56:18080] RECEIVED: [id: 0xf587f756, L:/192.168.0.56:18080 - R:/192.168.0.56:35082]
+13:56:10.033 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xdab71afd] REGISTERED
+13:56:10.037 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xdab71afd] BIND: /192.168.0.56:18080
+13:56:10.039 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xdab71afd, L:/192.168.0.56:18080] ACTIVE
+13:56:16.377 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xdab71afd, L:/192.168.0.56:18080] RECEIVED: [id: 0xbac5f082, L:/192.168.0.56:18080 - R:/192.168.0.56:60826]
+14:34:30.469 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x9508adf1] REGISTERED
+14:34:30.470 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x9508adf1] BIND: /192.168.0.56:18080
+14:34:30.471 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x9508adf1] CLOSE
+14:34:30.473 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x9508adf1] UNREGISTERED
+14:34:41.103 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x17b3acee] REGISTERED
+14:34:41.104 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x17b3acee] BIND: /192.168.0.56:18080
+14:34:41.105 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x17b3acee, L:/192.168.0.56:18080] ACTIVE
+14:34:48.296 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x17b3acee, L:/192.168.0.56:18080] RECEIVED: [id: 0x3fc2983c, L:/192.168.0.56:18080 - R:/192.168.0.56:32824]
+14:35:25.873 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x4736e49d] REGISTERED
+14:35:25.876 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x4736e49d] BIND: /192.168.0.56:18080
+14:35:25.877 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x4736e49d, L:/192.168.0.56:18080] ACTIVE
+14:35:28.712 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x4736e49d, L:/192.168.0.56:18080] RECEIVED: [id: 0xab881e89, L:/192.168.0.56:18080 - R:/192.168.0.56:32838]
+14:36:58.036 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xabc5b6d9] REGISTERED
+14:36:58.038 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xabc5b6d9] BIND: /192.168.0.56:18080
+14:36:58.039 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xabc5b6d9, L:/192.168.0.56:18080] ACTIVE
+14:37:01.264 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xabc5b6d9, L:/192.168.0.56:18080] RECEIVED: [id: 0xd77fdde5, L:/192.168.0.56:18080 - R:/192.168.0.56:32856]
+14:37:48.689 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xab528db7] REGISTERED
+14:37:48.690 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xab528db7] BIND: /192.168.0.56:18080
+14:37:48.691 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xab528db7, L:/192.168.0.56:18080] ACTIVE
+14:37:52.044 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xab528db7, L:/192.168.0.56:18080] RECEIVED: [id: 0x8e949ccb, L:/192.168.0.56:18080 - R:/192.168.0.56:32872]
+14:38:46.965 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x904a882a] REGISTERED
+14:38:46.967 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x904a882a] BIND: /192.168.0.56:18080
+14:38:46.968 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x904a882a, L:/192.168.0.56:18080] ACTIVE
+14:38:51.902 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x904a882a, L:/192.168.0.56:18080] RECEIVED: [id: 0x950e476e, L:/192.168.0.56:18080 - R:/192.168.0.56:32888]
+14:39:31.117 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x00a2000f] REGISTERED
+14:39:31.118 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x00a2000f] BIND: /192.168.0.56:18080
+14:39:31.119 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x00a2000f, L:/192.168.0.56:18080] ACTIVE
+14:39:33.403 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x00a2000f, L:/192.168.0.56:18080] RECEIVED: [id: 0x06cc3208, L:/192.168.0.56:18080 - R:/192.168.0.56:32902]
+14:39:49.784 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x2b74734d] REGISTERED
+14:39:49.785 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x2b74734d] BIND: /192.168.0.56:18080
+14:39:49.786 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x2b74734d, L:/192.168.0.56:18080] ACTIVE
+14:39:54.070 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0x2b74734d, L:/192.168.0.56:18080] RECEIVED: [id: 0x2c49ff56, L:/192.168.0.56:18080 - R:/192.168.0.56:32912]
+14:40:56.630 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xdada0d64] REGISTERED
+14:40:56.631 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xdada0d64] BIND: /192.168.0.56:18080
+14:40:56.632 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xdada0d64, L:/192.168.0.56:18080] ACTIVE
+14:41:03.311 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xdada0d64, L:/192.168.0.56:18080] RECEIVED: [id: 0xef4f3626, L:/192.168.0.56:18080 - R:/192.168.0.56:32930]
+14:43:25.344 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xb80d1057] REGISTERED
+14:43:25.345 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xb80d1057] BIND: /192.168.0.56:18080
+14:43:25.346 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xb80d1057, L:/192.168.0.56:18080] ACTIVE
+14:43:27.756 [nioEventLoopGroup-2-1] INFO  i.n.handler.logging.LoggingHandler - [id: 0xb80d1057, L:/192.168.0.56:18080] RECEIVED: [id: 0x13f42c62, L:/192.168.0.56:18080 - R:/192.168.0.56:32954]

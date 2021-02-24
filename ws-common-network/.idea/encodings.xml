@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/../ws-common-mongoDb" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ws-common-redis" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ws-common-table" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../ws-common-utils" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../y8-clusterCenterServer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../y8-gameServer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../y8-gatewayServer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../y8-loginServer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../y8-mongodbRedisServer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../y8-particularFunctionServer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../y8-relationship" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../y8-sdk" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../y8-thirdPartyServer" charset="UTF-8" />
+  </component>
+</project>

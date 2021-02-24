@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ws-common-aggregator.iml" filepath="$PROJECT_DIR$/ws-common-aggregator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ws-common-mongoDb/ws-common-mongoDb.iml" filepath="$PROJECT_DIR$/../ws-common-mongoDb/ws-common-mongoDb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ws-common-network/ws-common-network.iml" filepath="$PROJECT_DIR$/../ws-common-network/ws-common-network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ws-common-redis/ws-common-redis.iml" filepath="$PROJECT_DIR$/../ws-common-redis/ws-common-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ws-common-table/ws-common-table.iml" filepath="$PROJECT_DIR$/../ws-common-table/ws-common-table.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ws-common-utils/ws-common-utils.iml" filepath="$PROJECT_DIR$/../ws-common-utils/ws-common-utils.iml" />
+    </modules>
+  </component>
+</project>

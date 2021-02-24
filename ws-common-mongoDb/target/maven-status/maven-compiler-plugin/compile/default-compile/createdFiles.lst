@@ -1,0 +1,16 @@
+ws\common\mongoDB\config\MongoConfig.class
+ws\common\mongoDB\utils\UpdateOperators.class
+ws\common\mongoDB\handler\PojoHandler.class
+ws\common\mongoDB\implement\AbstractBaseDao.class
+ws\common\mongoDB\utils\WsJsonUtils.class
+ws\common\mongoDB\implement\_MongoDBClient.class
+ws\common\mongoDB\interfaces\BaseDao.class
+ws\common\mongoDB\interfaces\TopLevelPojo.class
+ws\common\mongoDB\interfaces\classification\UpdateDao.class
+ws\common\mongoDB\interfaces\MongoDBClient.class
+ws\common\mongoDB\interfaces\classification\InsertDao.class
+ws\common\mongoDB\exception\MongodbInitException.class
+ws\common\mongoDB\interfaces\classification\DeleteDao.class
+ws\common\mongoDB\interfaces\classification\FindDao.class
+ws\common\mongoDB\handler\OrderType.class
+ws\common\mongoDB\exception\DaoUninitializedException.class

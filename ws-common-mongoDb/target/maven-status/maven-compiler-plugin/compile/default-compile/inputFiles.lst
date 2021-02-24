@@ -1,0 +1,16 @@
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\config\MongoConfig.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\handler\PojoHandler.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\interfaces\classification\FindDao.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\utils\WsJsonUtils.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\interfaces\classification\DeleteDao.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\implement\_MongoDBClient.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\exception\DaoUninitializedException.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\interfaces\MongoDBClient.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\implement\AbstractBaseDao.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\exception\MongodbInitException.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\handler\OrderType.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\interfaces\BaseDao.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\interfaces\classification\UpdateDao.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\interfaces\TopLevelPojo.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\utils\UpdateOperators.java
+D:\ideaProjects\ws\ws-common-mongoDb\src\main\java\ws\common\mongoDB\interfaces\classification\InsertDao.java
