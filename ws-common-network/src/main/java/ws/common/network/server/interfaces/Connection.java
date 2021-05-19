@@ -10,4 +10,9 @@ public interface Connection {
      * @param sendHolder
      */
     void send(MessageSendHolder sendHolder);
+
+    /**
+     * 关闭连接
+     */
+    void close();
 }

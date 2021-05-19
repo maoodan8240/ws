@@ -25,6 +25,11 @@ public class _TcpConnection implements Connection, Serializable {
     }
 
     @Override
+    public void close() {
+        channel.close();
+    }
+
+    @Override
     public boolean equals(Object obj) {
         boolean equals = false;
         if (obj != null && _TcpConnection.class.isAssignableFrom(obj.getClass())) {

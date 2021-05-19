@@ -24,4 +24,9 @@ public class _HttpConnection implements Connection {
             context.writeAndFlush(Unpooled.EMPTY_BUFFER).addListener(ChannelFutureListener.CLOSE);
         }
     }
+
+    @Override
+    public void close() {
+        context.close();
+    }
 }
