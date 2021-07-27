@@ -1,14 +1,14 @@
 package ws.common.network.server.interfaces;
 
-import java.util.Map;
-
 import com.google.protobuf.Message;
+
+import java.util.Map;
 
 public interface CodeToMessagePrototype {
 
     /**
      * 是否存在某个[协议号]
-     * 
+     *
      * @param code
      * @return
      */
@@ -16,7 +16,7 @@ public interface CodeToMessagePrototype {
 
     /**
      * 是否存在某个[协议原型的类型]
-     * 
+     *
      * @param type
      * @return
      */
@@ -24,7 +24,7 @@ public interface CodeToMessagePrototype {
 
     /**
      * 根据协议号获取[协议原型]
-     * 
+     *
      * @param code
      * @return
      */
@@ -32,7 +32,7 @@ public interface CodeToMessagePrototype {
 
     /**
      * 根据[协议原型的类型]获取协议号
-     * 
+     *
      * @param type
      * @return
      */
@@ -40,14 +40,14 @@ public interface CodeToMessagePrototype {
 
     /**
      * 获取所有[协议号]-[协议原型]
-     * 
+     *
      * @return
      */
     Map<Integer, Message> queryAll();
 
     /**
      * 添加[协议号]-[协议原型]
-     * 
+     *
      * @param code
      * @param msgPrototype
      */
@@ -55,14 +55,14 @@ public interface CodeToMessagePrototype {
 
     /**
      * 根据[协议号]清除
-     * 
+     *
      * @param code
      */
     void clear(int code);
 
     /**
      * 根据[协议原型的类型]清除
-     * 
+     *
      * @param type
      */
     void clear(Class<? extends Message> type);
@@ -74,8 +74,9 @@ public interface CodeToMessagePrototype {
 
     /**
      * 队列大小
-     * 
+     *
      * @return
      */
     int size();
+
 }

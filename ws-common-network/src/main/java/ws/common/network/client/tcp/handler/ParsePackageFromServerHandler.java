@@ -2,6 +2,8 @@ package ws.common.network.client.tcp.handler;
 
 import com.google.protobuf.Message;
 import com.google.protobuf.TextFormat;
+import drama.protos.MessageHandlerProtos.Header;
+import drama.protos.MessageHandlerProtos.Response;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -12,8 +14,6 @@ import ws.common.network.server.handler.tcp.MessageReceiveHolder;
 import ws.common.network.server.implement._TcpConnection;
 import ws.common.network.server.interfaces.NetworkContext;
 import ws.common.network.server.interfaces.NetworkHandler;
-import ws.protos.MessageHandlerProtos.Header;
-import ws.protos.MessageHandlerProtos.Response;
 
 import java.util.Arrays;
 
@@ -34,19 +34,19 @@ public class ParsePackageFromServerHandler extends SimpleChannelInboundHandler<B
             ByteBuf byteBufCopy = byteBuf.copy();
             byte[] bsCopy = new byte[byteBufCopy.readableBytes()];
             byteBufCopy.readBytes(bsCopy);
-            LOGGER.debug("\n接收的完整字节数组为: bsCopy={}", Arrays.toString(bsCopy));
+//            LOGGER.debug("\n接收的完整字节数组为:bsCopy_length={}, bsCopy={}", bsCopy.length, Arrays.toString(bsCopy));
             bsCopy = null;
             byteBufCopy.release();
         }
         byte[] array_header = getHeaderBytes(byteBuf);
         byte[] array_body = getBodyBytes(byteBuf);
         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("\n接收的Header字节数组为: array_header={}", Arrays.toString(array_header));
-            LOGGER.debug("\n接收的Body字节数组为: array_body={}", Arrays.toString(array_body));
+//            LOGGER.debug("\n接收的Header字节数组为:array_header_length={}, array_header={}", array_header.length, Arrays.toString(array_header));
+//            LOGGER.debug("\n接收的Body字节数组为:array_body_length={}, array_body={}", array_body.length, Arrays.toString(array_body));
         }
         Header Header = build_Header_Msg(array_header);
         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("\n接收的Header为: \n{}", Header.toString());
+//            LOGGER.debug("\n接收的Header为: \n{}", Header.toString());
         }
         int msgCode = Header.getMsgCode().getNumber();
         if (!networkContext.getCodeToMessagePrototype().contains(msgCode)) {
@@ -55,7 +55,13 @@ public class ParsePackageFromServerHandler extends SimpleChannelInboundHandler<B
         }
         Message cm_Message = build_Cm_Message_Msg(msgCode, array_body);
         if (LOGGER.isDebugEnabled()) {
-            LOGGER.debug("\n接收的cm_Message为: {}\n{}", cm_Message.getClass(), TextFormat.printToUnicodeString(cm_Message));
+            if (msgCode != 2) {//屏蔽心跳包,心跳包的sm_heartbeat code是2
+                if (msgCode != 10) { //10是common_config
+                    if (msgCode != 12) { //12是玩家完善信息 头像的string非常大,要注释掉不然会报OOM
+                        LOGGER.debug("\n接收的cm_Message为: {}\n{}", cm_Message.getClass(), TextFormat.printToUnicodeString(cm_Message));
+                    }
+                }
+            }
         }
         long timeEnd = System.nanoTime();
         broadcastMessage(ctx.channel(), cm_Message, timeRev, timeEnd);
@@ -88,6 +94,8 @@ public class ParsePackageFromServerHandler extends SimpleChannelInboundHandler<B
      */
     private byte[] getBodyBytes(ByteBuf byteBuf) {
         int bodyLength = byteBuf.readableBytes();
+//        int bodyLength = byteBuf.readInt();
+//        LOGGER.debug("\ngetBodyBytes.length:{},readable.length:{}", bodyLength, byteBuf.readableBytes());
         byte[] array_body = new byte[bodyLength];
         byteBuf.readBytes(array_body);
         return array_body;

@@ -11,4 +11,7 @@ public interface JedisClient {
     void returnResource(Jedis jedis);
 
     void close();
+
+    void _init(String host, int port, String pwsd, int maxTotal, int maxIdlel, int second, int defaultObjectsCount);
+
 }

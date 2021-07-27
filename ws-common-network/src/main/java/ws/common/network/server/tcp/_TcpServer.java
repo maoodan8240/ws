@@ -1,4 +1,4 @@
-package ws.common.network.server;
+package ws.common.network.server.tcp;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -32,7 +32,7 @@ public final class _TcpServer implements TcpServer {
     }
 
     @Override
-    @SuppressWarnings({ "rawtypes", "unchecked" })
+    @SuppressWarnings({"rawtypes", "unchecked"})
     public void start() {
         bossGroup = new NioEventLoopGroup();
         workerGroup = new NioEventLoopGroup();
@@ -49,6 +49,7 @@ public final class _TcpServer implements TcpServer {
             ChannelFuture channelFuture = b.bind(serverConfig.getConnConfig().getHost(), serverConfig.getConnConfig().getPort()).sync();
             channel = channelFuture.channel();
             channel.closeFuture().sync();
+
         } catch (Exception e) {
             throw new TcpServerStartException("TcpServer 开启异常！ serverConfig=" + serverConfig.getConnConfig().toString() + "\n", e);
         } finally {
@@ -77,5 +78,6 @@ public final class _TcpServer implements TcpServer {
     public NetworkContext getNetworkContext() {
         return networkContext;
     }
+
 
 }

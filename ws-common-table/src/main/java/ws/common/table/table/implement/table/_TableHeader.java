@@ -4,13 +4,21 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import ws.common.table.data.TableDataHeader;
+import ws.common.table.table.exception.TableHeaderParseFailedException;
 import ws.common.table.table.interfaces.table.TableHeader;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class _TableHeader implements TableHeader, Serializable {
@@ -22,8 +30,13 @@ public class _TableHeader implements TableHeader, Serializable {
     private Map<String, String> columnNameToDesc = new ConcurrentHashMap<>(); // 列名-类的描述
 
     @Override
-    public List<String> getAllColumnNames() {
+    public List<String> getAllOrderColumnNames() {
         return new ArrayList<>(orderColumnNames);
+    }
+
+    @Override
+    public Set<String> getAllColumnNames() {
+        return this.columnNameToType.keySet();
     }
 
     @Override
@@ -53,6 +66,45 @@ public class _TableHeader implements TableHeader, Serializable {
             columnNameToType.put(header.getName(), header.getType());
             orderColumnNames.add(header.getName());
         }
+    }
+
+    @Override
+    public void parse(File file) throws TableHeaderParseFailedException {
+        InputStreamReader inputStreamReader = null;
+        BufferedReader bufferedReader = null;
+
+        try {
+            inputStreamReader = new InputStreamReader(new FileInputStream(file), Charset.forName("utf-8"));
+            bufferedReader = new BufferedReader(inputStreamReader);
+            String[] columnDescs = bufferedReader.readLine().split("\t");
+            String[] columnNames = bufferedReader.readLine().split("\t");
+            String[] columnTypes = bufferedReader.readLine().split("\t");
+            this.idColumnName = columnNames[0];
+
+            for (int i = 0; i < columnNames.length; ++i) {
+                this.columnNameToDesc.put(columnNames[i], columnDescs[i]);
+                this.columnNameToType.put(columnNames[i], columnTypes[i]);
+            }
+        } catch (Exception var15) {
+            throw new TableHeaderParseFailedException(this, file, var15);
+        } finally {
+            try {
+                if (bufferedReader != null) {
+                    bufferedReader.close();
+                }
+
+                if (inputStreamReader != null) {
+                    inputStreamReader.close();
+                }
+
+                bufferedReader = null;
+                inputStreamReader = null;
+            } catch (IOException var14) {
+                var14.printStackTrace();
+            }
+
+        }
+
     }
 
     @Override

@@ -2,6 +2,7 @@ package ws.common.network.server.handler.tcp;
 
 import com.google.protobuf.Message;
 import com.google.protobuf.TextFormat;
+import drama.protos.MessageHandlerProtos.Header;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -11,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import ws.common.network.server.implement._TcpConnection;
 import ws.common.network.server.interfaces.NetworkContext;
 import ws.common.network.server.interfaces.NetworkHandler;
-import ws.protos.MessageHandlerProtos.Header;
 
 import java.util.Arrays;
 
@@ -28,26 +28,26 @@ public class ParsePackageFromClientHandler extends SimpleChannelInboundHandler<B
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf byteBuf) throws Exception {
         long timeRev = System.nanoTime();
-        if (LOGGER.isTraceEnabled()) {
+        if (LOGGER.isDebugEnabled()) {
             ByteBuf byteBufCopy = byteBuf.copy();
             byte[] bsCopy = new byte[byteBufCopy.readableBytes()];
             byteBufCopy.readBytes(bsCopy);
-            LOGGER.trace("\n接收的完整字节数组为: bsCopy={}", Arrays.toString(bsCopy));
+//            LOGGER.debug("\n接收的完整字节数组为: bsCopy.length={}", bsCopy.length);
             bsCopy = null;
             byteBufCopy.release();
         }
         byte[] array_header = getHeaderBytes(byteBuf);
         byte[] array_body = getBodyBytes(byteBuf);
-        if (LOGGER.isTraceEnabled()) {
-            LOGGER.trace("\n接收的Header字节数组为: array_header={}", Arrays.toString(array_header));
-            LOGGER.trace("\n接收的Body字节数组为: array_body={}", Arrays.toString(array_body));
+        if (LOGGER.isDebugEnabled()) {
+//            LOGGER.debug("\n接收的Header字节数组为:array_header_length={}, array_header={}", array_header.length, Arrays.toString(array_header));
+//            LOGGER.debug("\n接收的Body字节数组为:array_body_length={}, array_body={}", array_body.length, Arrays.toString(array_body));
         }
         Header header = build_Header_Msg(array_header);
-        if (LOGGER.isTraceEnabled()) {
-            LOGGER.trace("\n接收的Header为: \n{}", TextFormat.printToUnicodeString(header));
+        if (LOGGER.isDebugEnabled()) {
+//            LOGGER.debug("\n接收的Header为: \n{}", TextFormat.printToUnicodeString(header));
         }
         int msgCode = header.getMsgCode().getNumber();
-        if (msgCode == 1) { // 心跳包，1固定未心跳包
+        if (msgCode == 1) { // 心跳包，1固定为心跳包
             networkHandler.onHeartBeating(new _TcpConnection(ctx.channel()));
             return;
         }
@@ -56,8 +56,14 @@ public class ParsePackageFromClientHandler extends SimpleChannelInboundHandler<B
             throw new RuntimeException(msg);
         }
         Message cm_Message = build_Cm_Message_Msg(msgCode, array_body);
-        if (LOGGER.isTraceEnabled()) {
-            LOGGER.trace("\n接收的cm_Message为: {}\n{}", cm_Message.getClass(), TextFormat.printToUnicodeString(cm_Message));
+        if (LOGGER.isDebugEnabled()) {
+            if (msgCode != 1) {//屏蔽心跳包,心跳包的Cm_heartbeat code是1
+                if (msgCode != 9) {//9是common_config
+                    if (msgCode != 11) {//11是玩家完善信息 头像的string非常大,要注释掉不然会报OOM
+                        LOGGER.debug("\n接收的cm_Message为: {}\n{}", cm_Message.getClass(), TextFormat.printToUnicodeString(cm_Message));
+                    }
+                }
+            }
         }
         long timeEnd = System.nanoTime();
         broadcastMessage(ctx.channel(), cm_Message, timeRev, timeEnd);
@@ -68,6 +74,7 @@ public class ParsePackageFromClientHandler extends SimpleChannelInboundHandler<B
         broadcastDisconnected(ctx.channel());
         ctx.close();
     }
+
 
     /**
      * 读取Header字节数组
@@ -82,6 +89,7 @@ public class ParsePackageFromClientHandler extends SimpleChannelInboundHandler<B
         return array_header;
     }
 
+
     /**
      * 读取Body字节数组
      *
@@ -89,6 +97,8 @@ public class ParsePackageFromClientHandler extends SimpleChannelInboundHandler<B
      * @return
      */
     private byte[] getBodyBytes(ByteBuf byteBuf) {
+//        int bodyLength = byteBuf.readInt();
+//        LOGGER.debug("\ngetBodyBytes.length:{},readable.length:{}", bodyLength, byteBuf.readableBytes());
         int bodyLength = byteBuf.readableBytes();
         byte[] array_body = new byte[bodyLength];
         byteBuf.readBytes(array_body);
@@ -148,4 +158,6 @@ public class ParsePackageFromClientHandler extends SimpleChannelInboundHandler<B
     private void broadcastDisconnected(Channel channel) {
         networkHandler.onDisconnected(new _TcpConnection(channel));
     }
+
+
 }

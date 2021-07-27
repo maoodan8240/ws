@@ -13,7 +13,7 @@ import java.util.Enumeration;
 
 
 public class ParseRoute {
-    private static final String NET_URL = "http://www.3322.org/dyndns/getip";
+    private static final String NET_URL = "http://www.ip111.cn/";
     private String _gateway;
     private String _ip;
     private String _netIp;
@@ -139,11 +139,20 @@ public class ParseRoute {
         try {
             URL url = new URL(NET_URL);
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+            String flagKey = "card-body";
+            boolean flag = false;
             String line = "";
             while ((line = br.readLine()) != null) {
-                int count = StringUtils.countMatches(line, ".");
-                if (count == 3) {
-                    break;
+                if(line.contains(flagKey)){
+                    flag = true;
+                    continue;
+                }
+                if(flag) {
+                    int count = StringUtils.countMatches(line, ".");
+                    if (count == 3) {
+                        line = line.substring(0,line.indexOf(" "));
+                        break;
+                    }
                 }
             }
             _netIp = StringUtils.trimToEmpty(line);

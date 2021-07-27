@@ -21,6 +21,10 @@ public class _JedisClient implements JedisClient {
     private long maxWaitMillis;// 获取连接时的最大等待毫秒数
     private int defaultObjectsCount;
 
+    public  _JedisClient(){
+
+    }
+
     /**
      * 
      * @param host
@@ -39,6 +43,16 @@ public class _JedisClient implements JedisClient {
      *            初始化poll中的连接数
      */
     public _JedisClient(String host, int port, String pwsd, int maxTotal, int maxIdlel, int second, int defaultObjectsCount) {
+        this.host = host;
+        this.port = port;
+        this.pwsd = pwsd;
+        this.maxTotal = maxTotal;
+        this.maxIdlel = maxIdlel;
+        this.maxWaitMillis = second * 1000;
+        this.defaultObjectsCount = defaultObjectsCount;
+    }
+
+    public void _init(String host, int port, String pwsd, int maxTotal, int maxIdlel, int second, int defaultObjectsCount){
         this.host = host;
         this.port = port;
         this.pwsd = pwsd;

@@ -109,4 +109,9 @@ public class _JedisSentinelClient implements JedisClient {
             pool.close();
         }
     }
+
+    @Override
+    public void _init(String host, int port, String pwsd, int maxTotal, int maxIdlel, int second, int defaultObjectsCount) {
+
+    }
 }

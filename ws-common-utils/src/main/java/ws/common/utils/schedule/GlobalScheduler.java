@@ -15,6 +15,8 @@ public class GlobalScheduler {
     public static void init() {
         scheduler = new Scheduler();
         File file = new File(TASKLIST_FILE_PATH);
+        logger.debug("tasklist.cron4j 路径 ={},绝对路径={}", file.getPath(), file.getAbsolutePath());
+        logger.debug("java.class.path={}", System.getProperty("java.class.path"));
         if (!file.exists()) {
             throw new RuntimeException("Schedule File {" + TASKLIST_FILE_PATH + "} not exist");
         }

@@ -19,13 +19,13 @@
 
 
     <!-- 配置部署的远程仓库 -->
-    <distributionManagement>
-        <snapshotRepository>
-            <id>wsRepo</id>
-            <name>wsRepo snapshot repository</name>
-            <url>file:///D:\software\apache-maven-3.6.3\Repository</url>
-        </snapshotRepository>
-    </distributionManagement>
+    <!--    <distributionManagement>-->
+    <!--        <snapshotRepository>-->
+    <!--            <id>wsRepo</id>-->
+    <!--            <name>wsRepo snapshot repository</name>-->
+    <!--            <url>file:///D:\software\apache-maven-3.6.3\Repository</url>-->
+    <!--        </snapshotRepository>-->
+    <!--    </distributionManagement>-->
 
 
     <build>
@@ -57,7 +57,23 @@
         </pluginManagement>
     </build>
 
-
+    <distributionManagement>
+        <repository>
+            <id>maven-releases</id>
+            <name>116-maven repository</name>
+            <url>http://10.0.2.116:8081/repository/maven-release</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-snapshots</id>
+            <name>116-maven repository</name>
+            <url>http://10.0.2.116:8081/repository/maven-snapshots</url>
+        </snapshotRepository>
+        <!--        <snapshotRepository>-->
+        <!--            <id>localRepository</id>-->
+        <!--            <name>admin</name>-->
+        <!--            <url>file:C:/Users/egret/.m2/repository</url>-->
+        <!--        </snapshotRepository>-->
+    </distributionManagement>
     <dependencies>
 
         <dependency>

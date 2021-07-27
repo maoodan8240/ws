@@ -12,7 +12,7 @@ public class MessageFrameConfig {
     /**
      * 服务器 接收到的网络包最大的长度
      */
-    public static int SERVER_RECEIVE_MESSAGE_PACKAGE_RECEIVED_MAX_LEN = 1000;
+    public static int SERVER_RECEIVE_MESSAGE_PACKAGE_RECEIVED_MAX_LEN = 102400;
     /**
      * 客户端 接收到的网络包最大的长度
      */
@@ -22,6 +22,10 @@ public class MessageFrameConfig {
      */
     public static int MESSAGE_PACKAGE_PLACEHOLDER_BYTE_NUM = 1;
     /**
+     * 消息帧的占位符字节数（当前int）
+     */
+    public static int MESSAGE_PACKAGE_PLACEHOLDER_INT_NUM = 4;
+    /**
      * 整个消息帧的长度的值所占的字节数（当前short）
      */
     public static int MESSAGE_PACKAGE_TOTAL_BYTE_NUM = 2;
@@ -29,5 +33,9 @@ public class MessageFrameConfig {
      * 消息帧Header长度的值所占的节数数（当前short）
      */
     public static int MESSAGE_PACKAGE_HEADER_BYTE_NUM = 2;
+    /**
+     * 消息帧Body长度的值所占的节数数（当前int）
+     */
+    public static int MESSAGE_PACKAGE_BODY_BYTE_NUM = 4;
 
 }
