@@ -1,9 +1,12 @@
 package ws.common.table.table.interfaces.table;
 
 import ws.common.table.data.TableDataHeader;
+import ws.common.table.table.exception.TableHeaderParseFailedException;
 
+import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 表头
@@ -22,7 +25,12 @@ public interface TableHeader {
      *
      * @return
      */
-    List<String> getAllColumnNames();
+    List<String> getAllOrderColumnNames();
+
+    /***
+     * 获取所有列名
+     */
+    Set<String> getAllColumnNames();
 
     /**
      * 查询列名与列类型映射
@@ -52,4 +60,11 @@ public interface TableHeader {
      * @param headerDatas
      */
     void parse(String tableName, List<TableDataHeader> headerDatas);
+
+    /***
+     * 加载tableheader数据
+     * @param file
+     * @throws TableHeaderParseFailedException
+     */
+    void parse(File file) throws TableHeaderParseFailedException;
 }

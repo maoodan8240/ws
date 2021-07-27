@@ -1,5 +1,6 @@
 package ws.common.network.client.tcp;
 
+import ws.common.network.client.interfaces.RetryPolicy;
 import ws.common.network.server.interfaces.Connection;
 import ws.common.network.server.interfaces.NetworkContext;
 import ws.common.network.server.interfaces.NetworkHandler;
@@ -15,5 +16,8 @@ public interface TcpClient {
     NetworkContext getNetworkContext();
 
     Connection getConnection();
+
+    RetryPolicy getRetryPolicy();
+
 
 }

@@ -5,7 +5,7 @@ import ws.common.table.table.interfaces.table.TableHeader;
 import java.io.File;
 
 /**
- * Created by zhangweiwei on 16-8-15.
+ * Created by lee on 16-8-15.
  */
 public class TableHeaderParseFailedException extends Exception {
 

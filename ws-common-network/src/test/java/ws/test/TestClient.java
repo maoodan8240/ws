@@ -1,5 +1,8 @@
 package ws.test;
 
+import com.google.protobuf.ByteString;
+import drama.protos.CodesProtos;
+import drama.protos.PlayerProtos;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ws.common.network.client.tcp.TcpClient;
@@ -14,33 +17,30 @@ import ws.common.network.server.implement._CodeToMessagePrototype;
 import ws.common.network.server.interfaces.CodeToMessagePrototype;
 import ws.common.network.server.interfaces.Connection;
 import ws.common.network.server.interfaces.NetworkListener;
-import ws.protos.CodesProtos.ProtoCodes;
-import ws.protos.PlayerProtos;
-import ws.protos.PlayerProtos.Cm_GmCommand;
-import ws.protos.PlayerProtos.Sm_GmCommand;
+import ws.common.network.utils.EnumUtils;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 
-/**
- * Created by zhangweiwei on 16-8-11.
- */
+
 public class TestClient {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestClient.class);
 
     public static void main(String[] args) throws InterruptedException {
         ServerConfig serverConfig = new _ServerConfig(new _ConnConfig(//
                 ConnConfig.ServerProtocolType.TCP, //
-                "192.168.0.56", //
+                "127.0.0.1", //
                 18080, //
                 64, //
                 320 //
         ));
         CodeToMessagePrototype ctm = new _CodeToMessagePrototype();
-        ctm.add(ProtoCodes.Code.Cm_HeartBeat_VALUE, PlayerProtos.Cm_HeartBeat.newBuilder().getDefaultInstanceForType());
-        ctm.add(ProtoCodes.Code.Sm_HeartBeat_VALUE, PlayerProtos.Sm_HeartBeat.newBuilder().getDefaultInstanceForType());
 
-        ctm.add(ProtoCodes.Code.Cm_GmCommand_VALUE, Cm_GmCommand.newBuilder().getDefaultInstanceForType());
-        ctm.add(ProtoCodes.Code.Sm_GmCommand_VALUE, Sm_GmCommand.newBuilder().getDefaultInstanceForType());
 
         TcpClient tcpClient = new _TcpClient(serverConfig);
         tcpClient.getNetworkContext().setCodeToMessagePrototype(ctm);
@@ -52,7 +52,7 @@ public class TestClient {
 
             @Override
             public void onOffline(Connection connection) {
-                System.out.println("client 离线了");
+                System.out.println("client 离线了" + tcpClient.getConnection());
             }
 
 
@@ -67,22 +67,43 @@ public class TestClient {
             }
         });
         tcpClient.start();
-        int i = 1;
-        while (true) {
-            System.out.println("发送消息了。。。。");
-            PlayerProtos.Cm_HeartBeat.Builder heartBeat = PlayerProtos.Cm_HeartBeat.newBuilder();
-            heartBeat.setAction(PlayerProtos.Cm_HeartBeat.Action.SYNC);
-            MessageSendHolder holder = new MessageSendHolder(heartBeat.build(), "", new ArrayList<>());
-            tcpClient.getConnection().send(holder);
+        System.out.println("发送消息了。。。。");
+        PlayerProtos.Cm_HeartBeat.Builder heartBeat = PlayerProtos.Cm_HeartBeat.newBuilder();
+        heartBeat.setAction(PlayerProtos.Cm_HeartBeat.Action.SYNC);
+        MessageSendHolder holder = new MessageSendHolder(heartBeat.build(), EnumUtils.protoActionToString(CodesProtos.ProtoCodes.Code.Cm_HeartBeat), new ArrayList<>());
+        tcpClient.getConnection().send(holder);
 
-            Cm_GmCommand.Builder b1 = Cm_GmCommand.newBuilder();
-            b1.setAction(Cm_GmCommand.Action.SEND);
-            b1.setContent("正在发送第" + i + "个消息...");
-            MessageSendHolder holder1 = new MessageSendHolder(b1.build(), "", new ArrayList<>());
-            tcpClient.getConnection().send(holder1);
-            Thread.sleep(30000);
-            i++;
-            // 搜索的 的第三的的  的  的
-        }//的的的  的 的
+        PlayerProtos.Cm_GmCommand.Builder b1 = PlayerProtos.Cm_GmCommand.newBuilder();
+        b1.setAction(PlayerProtos.Cm_GmCommand.Action.SEND);
+        File file = new File("D:\\work_space\\xxx.png");
+        byte[] bytes2 = file2byte(file);
+        byte[] bytes1 = Base64.getEncoder().encode(bytes2);
+        b1.setIcon(ByteString.copyFrom(bytes1));
+        MessageSendHolder holder1 = new MessageSendHolder(b1.build(), "", new ArrayList<>());
+        tcpClient.getConnection().send(holder1);
+        Thread.sleep(30000);
+        // 搜索的 的第三的的  的  的
     }
+
+    private static byte[] file2byte(File tradeFile) {
+        byte[] buffer = null;
+        try {
+            FileInputStream fis = new FileInputStream(tradeFile);
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            byte[] b = new byte[1024];
+            int n;
+            while ((n = fis.read(b)) != -1) {
+                bos.write(b, 0, n);
+            }
+            fis.close();
+            bos.close();
+            buffer = bos.toByteArray();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return buffer;
+    }
+
 }

@@ -1,9 +1,13 @@
 package ws.test;
 
+import drama.protos.CodesProtos.ProtoCodes;
+import drama.protos.EnumsProtos.ErrorCodeEnum;
+import drama.protos.MessageHandlerProtos;
+import drama.protos.MessageHandlerProtos.Response;
+import drama.protos.PlayerProtos.Cm_GmCommand;
+import drama.protos.PlayerProtos.Sm_GmCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ws.common.network.server.TcpServer;
-import ws.common.network.server._TcpServer;
 import ws.common.network.server.config.implement._ConnConfig;
 import ws.common.network.server.config.implement._ServerConfig;
 import ws.common.network.server.config.interfaces.ConnConfig;
@@ -14,18 +18,18 @@ import ws.common.network.server.implement._CodeToMessagePrototype;
 import ws.common.network.server.interfaces.CodeToMessagePrototype;
 import ws.common.network.server.interfaces.Connection;
 import ws.common.network.server.interfaces.NetworkListener;
-import ws.protos.CodesProtos.ProtoCodes;
-import ws.protos.EnumsProtos.ErrorCodeEnum;
-import ws.protos.MessageHandlerProtos;
-import ws.protos.MessageHandlerProtos.Response;
-import ws.protos.PlayerProtos;
-import ws.protos.PlayerProtos.Cm_GmCommand;
-import ws.protos.PlayerProtos.Sm_GmCommand;
+import ws.common.network.server.tcp.TcpServer;
+import ws.common.network.server.tcp._TcpServer;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 
 /**
- * Created by zhangweiwei on 16-8-11.
+ * Created by lee on 16-8-11.
  */
 public class TestServer {
     private static final Logger LOGGER = LoggerFactory.getLogger(TestServer.class);
@@ -33,17 +37,13 @@ public class TestServer {
     public static void main(String[] args) {
         ServerConfig serverConfig = new _ServerConfig(new _ConnConfig(//
                 ConnConfig.ServerProtocolType.TCP, //
-                "192.168.0.56", //
+                "127.0.0.1", //
                 18080, //
                 64, //
                 320 //
         ));
         CodeToMessagePrototype ctm = new _CodeToMessagePrototype();
-        ctm.add(ProtoCodes.Code.Cm_HeartBeat_VALUE, PlayerProtos.Cm_HeartBeat.newBuilder().getDefaultInstanceForType());
-        ctm.add(ProtoCodes.Code.Sm_HeartBeat_VALUE, PlayerProtos.Sm_HeartBeat.newBuilder().getDefaultInstanceForType());
 
-        ctm.add(ProtoCodes.Code.Cm_GmCommand_VALUE, Cm_GmCommand.newBuilder().getDefaultInstanceForType());
-        ctm.add(ProtoCodes.Code.Sm_GmCommand_VALUE, Sm_GmCommand.newBuilder().getDefaultInstanceForType());
 
         TcpServer tcpServer = new _TcpServer(serverConfig);
         tcpServer.getNetworkContext().setCodeToMessagePrototype(ctm);
@@ -53,6 +53,10 @@ public class TestServer {
             @Override
             public void onReceive(MessageReceiveHolder receiveHolder) {
                 System.out.println("Server 收到消息" + receiveHolder.getMessage());
+                Cm_GmCommand msg = (Cm_GmCommand) receiveHolder.getMessage();
+                byte[] bytes = Base64.getDecoder().decode(msg.getIcon().toByteArray());
+
+                getFile(bytes, "D:\\work_space", "xx3.png");
                 Response.Builder resp = MessageHandlerProtos.Response.newBuilder();
                 resp.setErrorCode(ErrorCodeEnum.UNKNOWN);
                 resp.setResult(true);
@@ -81,5 +85,41 @@ public class TestServer {
             }
         });
         tcpServer.start();
+    }
+
+    /**
+     * 根据byte数组，生成文件
+     */
+    public static void getFile(byte[] bfile, String filePath, String fileName) {
+        BufferedOutputStream bos = null;
+        FileOutputStream fos = null;
+        File file = null;
+        try {
+            File dir = new File(filePath);
+            if (!dir.exists() && dir.isDirectory()) {//判断文件目录是否存在
+                dir.mkdirs();
+            }
+            file = new File(filePath + "\\" + fileName);
+            fos = new FileOutputStream(file);
+            bos = new BufferedOutputStream(fos);
+            bos.write(bfile);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (bos != null) {
+                try {
+                    bos.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        }
     }
 }

@@ -31,10 +31,10 @@ public class TcpServerInitializer {
         pipeline.addLast(new LengthFieldBasedFrameDecoder(
                 // 默认为大端处理
                 MessageFrameConfig.SERVER_RECEIVE_MESSAGE_PACKAGE_RECEIVED_MAX_LEN, // 消息的最大长度
-                MessageFrameConfig.MESSAGE_PACKAGE_PLACEHOLDER_BYTE_NUM, // HDR1(1) 消息帧的占位符字节数
-                MessageFrameConfig.MESSAGE_PACKAGE_TOTAL_BYTE_NUM, // Length(2) 整个消息帧的长度的值所占的字节数（当前short）
+                MessageFrameConfig.MESSAGE_PACKAGE_PLACEHOLDER_BYTE_NUM, // HDR1(1) 消息帧的占位符字节数(位于发送的字节数组中下标的位置)长度域
+                MessageFrameConfig.MESSAGE_PACKAGE_PLACEHOLDER_INT_NUM, // Length(2) 整个消息帧的长度的值所占的字节数（当前short）(长度域的自己的字节数长度)
                 -(MessageFrameConfig.MESSAGE_PACKAGE_PLACEHOLDER_BYTE_NUM + MessageFrameConfig.MESSAGE_PACKAGE_TOTAL_BYTE_NUM), // -(HDR1(1) + Length(2))
-                (MessageFrameConfig.MESSAGE_PACKAGE_PLACEHOLDER_BYTE_NUM + MessageFrameConfig.MESSAGE_PACKAGE_TOTAL_BYTE_NUM), // (HDR1(1) + Length(2))
+                (MessageFrameConfig.MESSAGE_PACKAGE_PLACEHOLDER_BYTE_NUM + MessageFrameConfig.MESSAGE_PACKAGE_PLACEHOLDER_INT_NUM), // (HDR1(1) + Length(2))
                 true));
         pipeline.addLast(new ParsePackageFromClientHandler(networkHandler, networkContext));
     }

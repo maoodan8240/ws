@@ -1,4 +1,4 @@
-package ws.common.network.server;
+package ws.common.network.server.tcp;
 
 import ws.common.network.server.interfaces.NetworkContext;
 import ws.common.network.server.interfaces.NetworkHandler;

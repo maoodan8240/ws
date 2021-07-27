@@ -22,14 +22,14 @@ public class ServerInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
         switch (serverConfig.getConnConfig().getProtocolType()) {
-        case TCP:
-            new TcpServerInitializer(pipeline).initChannel(serverConfig, networkHandler, networkContext);
-            break;
-        case HTTP:
-            new HttpServerInitializer(pipeline).initChannel(serverConfig, networkHandler, networkContext);
-            break;
-        default:
-            break;
+            case TCP:
+                new TcpServerInitializer(pipeline).initChannel(serverConfig, networkHandler, networkContext);
+                break;
+            case HTTP:
+                new HttpServerInitializer(pipeline).initChannel(serverConfig, networkHandler, networkContext);
+                break;
+            default:
+                break;
         }
     }
 }
