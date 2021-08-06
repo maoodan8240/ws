@@ -1,16 +1,15 @@
 package ws.common.table.table.implement.container;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-
 import ws.common.table.table.interfaces.Row;
 import ws.common.table.table.interfaces.container.HierarchyName;
 import ws.common.table.table.interfaces.container.TableContainer;
 import ws.common.table.table.interfaces.table.Table;
+
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class _TableContainer implements TableContainer, Serializable {
     private static final long serialVersionUID = 1L;
@@ -124,9 +123,19 @@ public class _TableContainer implements TableContainer, Serializable {
     }
 
     @Override
+    public <RowType extends Row> Table<RowType> get(String tableName) {
+        return (Table<RowType>) tableNameToTable.get(tableName);
+    }
+
+    @Override
     public void addAnonymousTable(Table<? extends Row> table) {
         rowTypeToAnonymousTable.put(table.getRowClass(), table);
     }
+
+//    @Override
+//    public void addAnonymousTable(Table<? extends Row> table, int specialId) {
+//        rowTypeToAnonymousTable.put(table.getRowClass(), table);
+//    }
 
     @Override
     public void addNamedTable(Table<? extends Row> table) {
@@ -144,6 +153,22 @@ public class _TableContainer implements TableContainer, Serializable {
         }
     }
 
+//    @Override
+//    public void addNamedTable(String hierarchySubContainerName, Table<? extends Row> table, int specialId) {
+//        HierarchyName name = HierarchyNameBuilder.build(hierarchySubContainerName);
+//        if (name.isAnonymous()) {
+//            tableNameToTable.put(table.getName(), table);
+//        } else {
+//            buildSubContainer(hierarchySubContainerName);
+//            getSubContainer(hierarchySubContainerName).addNamedTable(table, specialId);
+//        }
+//    }
+
+//    @Override
+//    public void addNamedTable(Table<? extends Row> table, int specialId) {
+//        addNamedTable(null, table, specialId);
+//    }
+
     @Override
     public void addTable(Table<? extends Row> table) {
         HierarchyName name = HierarchyNameBuilder.build(table.getName());
@@ -153,6 +178,16 @@ public class _TableContainer implements TableContainer, Serializable {
             addNamedTable(table);
         }
     }
+
+//    @Override
+//    public void addTable(Table<? extends Row> table, int specialId) {
+//        HierarchyName name = HierarchyNameBuilder.build(table.getName());
+//        if (name.isAnonymous()) {
+//            addAnonymousTable(table, specialId);
+//        } else {
+//            addNamedTable(table, specialId);
+//        }
+//    }
 
     @Override
     public boolean hasSubContainer(String hierarchySubContainerName) {

@@ -12,11 +12,11 @@ public class MessageFrameConfig {
     /**
      * 服务器 接收到的网络包最大的长度
      */
-    public static int SERVER_RECEIVE_MESSAGE_PACKAGE_RECEIVED_MAX_LEN = 102400;
+    public static int SERVER_RECEIVE_MESSAGE_PACKAGE_RECEIVED_MAX_LEN = 204800;
     /**
      * 客户端 接收到的网络包最大的长度
      */
-    public static int CLIENT_RECEIVE_MESSAGE_PACKAGE_RECEIVED_MAX_LEN = 102400;// 100 KB
+    public static int CLIENT_RECEIVE_MESSAGE_PACKAGE_RECEIVED_MAX_LEN = 204800;// 100 KB
     /**
      * 消息帧的占位符字节数（当前byte）
      */

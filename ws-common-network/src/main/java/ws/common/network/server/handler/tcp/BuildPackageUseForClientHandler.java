@@ -59,9 +59,9 @@ public class BuildPackageUseForClientHandler extends MessageToMessageEncoder<Mes
             //以下是单独对这个心跳可common_config的特殊处理,不是通用框架中的逻辑,其他项目可以删除这个判断
             if (response.getMsgCode().getNumber() != 2) {//屏蔽心跳包,心跳包的Sm_heartbeat code是2
                 if (response.getMsgCode().getNumber() != 10) {//10是common_config
-                    if (response.getMsgCode().getNumber() != 12) { //12是玩家完善信息 头像的string非常大,要注释掉不然会报OOM
-                        LOGGER.error("\n发送的消息体内容长度为: bLength={} kbLength={} \n类型为={}\n内容为:\n<<\n{}>>", bLength, kbLength, msg.getClass().getSimpleName(), TextFormat.printToUnicodeString(msg));
-                    }
+//                    if (response.getMsgCode().getNumber() != 12) { //12是玩家完善信息 头像的string非常大,要注释掉不然会报OOM
+                    LOGGER.error("\n发送的消息体内容长度为: bLength={} kbLength={} \n类型为={}\n内容为:\n<<\n{}>>", bLength, kbLength, msg.getClass().getSimpleName(), TextFormat.printToUnicodeString(msg));
+//                    }
                 }
             }
             bsCopy = null;

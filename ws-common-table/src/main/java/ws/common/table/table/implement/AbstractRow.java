@@ -1,13 +1,13 @@
 package ws.common.table.table.implement;
 
-import java.io.Serializable;
-import java.util.Map;
-
 import ws.common.table.table.exception.CellParseFailedException;
 import ws.common.table.table.exception.RowParseFailedException;
 import ws.common.table.table.interfaces.Row;
 import ws.common.table.table.interfaces.table.Table;
 import ws.common.table.table.utils.CellParser;
+
+import java.io.Serializable;
+import java.util.Map;
 
 public abstract class AbstractRow implements Row, Serializable {
     private static final long serialVersionUID = 1L;
@@ -30,11 +30,11 @@ public abstract class AbstractRow implements Row, Serializable {
         return id;
     }
 
+
     /**
      * 解析本行
-     * 
-     * @param map
-     *            列名映射到列值 columnNameMaptoValue
+     *
+     * @param map 列名映射到列值 columnNameMaptoValue
      * @throws CellParseFailedException
      */
     public abstract void parseRow(Map<String, String> map) throws CellParseFailedException;
@@ -49,5 +49,6 @@ public abstract class AbstractRow implements Row, Serializable {
             throw new RowParseFailedException(this, rowNumber, e);
         }
     }
+
 
 }

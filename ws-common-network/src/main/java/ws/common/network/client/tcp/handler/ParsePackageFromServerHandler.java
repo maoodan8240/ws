@@ -56,11 +56,11 @@ public class ParsePackageFromServerHandler extends SimpleChannelInboundHandler<B
         Message cm_Message = build_Cm_Message_Msg(msgCode, array_body);
         if (LOGGER.isDebugEnabled()) {
             if (msgCode != 2) {//屏蔽心跳包,心跳包的sm_heartbeat code是2
-                if (msgCode != 10) { //10是common_config
-                    if (msgCode != 12) { //12是玩家完善信息 头像的string非常大,要注释掉不然会报OOM
-                        LOGGER.debug("\n接收的cm_Message为: {}\n{}", cm_Message.getClass(), TextFormat.printToUnicodeString(cm_Message));
-                    }
-                }
+//                if (msgCode != 10) { //10是common_config
+//                    if (msgCode != 12) { //12是玩家完善信息 头像的string非常大,要注释掉不然会报OOM
+                LOGGER.debug("\n接收的cm_Message为: {}\n{}", cm_Message.getClass(), TextFormat.printToUnicodeString(cm_Message));
+//                    }
+//                }
             }
         }
         long timeEnd = System.nanoTime();

@@ -56,11 +56,11 @@ public class BuildPackageUseForServerHandler extends MessageToMessageEncoder<Mes
 //            LOGGER.debug("\n发送的完整字节数组为={},length={}", Arrays.toString(bsCopy), bsCopy.length);
             int number = header.getMsgCode().getNumber();
             if (number != 1) {//屏蔽心跳包,心跳包的Cm_heartbeat code是1 && 9是common_config && 11是玩家完善信息 头像的string非常大,要注释掉不然会报OOM
-                if (number != 9) {
-                    if (number != 11) {
-                        LOGGER.debug("\n发送的消息体内容长度为: bLength={} kbLength={} \n类型为={}\n内容为:\n<<\n{}>>", bLength, kbLength, msg.getClass().getSimpleName(), TextFormat.printToUnicodeString(msg));
-                    }
-                }
+//                if (number != 9) {
+//                    if (number != 11) {
+                LOGGER.debug("\n发送的消息体内容长度为: bLength={} kbLength={} \n类型为={}\n内容为:\n<<\n{}>>", bLength, kbLength, msg.getClass().getSimpleName(), TextFormat.printToUnicodeString(msg));
+//                    }
+//                }
             }
             bsCopy = null;
             byteBufCopy.release();

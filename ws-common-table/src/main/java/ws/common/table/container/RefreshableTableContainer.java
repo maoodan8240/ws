@@ -65,4 +65,48 @@ public interface RefreshableTableContainer {
      * @throws Exception
      */
     <RowType extends Row> void addTable(String hierarchyTableName, Class<RowType> rowType, TableData tableDataTxt) throws Exception;
+
+    /**
+     * 添加带有特殊Id的匿名表
+     *
+     * @param rowType
+     * @param tableDataTxt
+     * @param specialId
+     * @param <RowType>
+     * @throws Exception
+     */
+    <RowType extends Row> void addTable(Class<RowType> rowType, TableData tableDataTxt, int specialId) throws Exception;
+
+    /**
+     * 添加带有特殊Id的表
+     *
+     * @param hierarchyTableName
+     * @param rowType
+     * @param tableDataTxt
+     * @param specialId
+     * @param <RowType>
+     * @throws Exception
+     */
+    <RowType extends Row> void addTable(String hierarchyTableName, Class<RowType> rowType, TableData tableDataTxt, int specialId) throws Exception;
+
+
+    /**
+     * 通过表名获取TableRow
+     *
+     * @param tableName
+     * @return
+     */
+    <RowType extends Row> Table<RowType> get(String tableName);
+
+    /**
+     * 先清空再添加带有特殊Id的表
+     *
+     * @param rowType
+     * @param tableDataTxt
+     * @param specialId
+     * @param isClear
+     * @param <RowType>
+     * @throws Exception
+     */
+    <RowType extends Row> void addTable(Class<RowType> rowType, TableData tableDataTxt, int specialId, boolean isClear) throws Exception;
 }

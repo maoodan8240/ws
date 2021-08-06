@@ -74,4 +74,34 @@ public interface Table<RowType extends Row> {
      */
     void parse(Class<RowType> rowClass, TableData tableDataTxt) throws InstantiationException, IllegalAccessException, RowParseFailedException, TableParseFailedException;
 
+    /**
+     * 解析表文本并增加特殊的Id
+     *
+     * @param rowClass
+     * @param tableDataTxt
+     * @param specialId
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws RowParseFailedException
+     * @throws TableParseFailedException
+     */
+    void parse(Class<RowType> rowClass, TableData tableDataTxt, int specialId) throws InstantiationException, IllegalAccessException, RowParseFailedException, TableParseFailedException;
+
+    /**
+     * 增量解析表文本并增加特殊的Id
+     *
+     * @param rowClass
+     * @param tableDataTxt
+     * @param specialId
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws RowParseFailedException
+     * @throws TableParseFailedException
+     */
+    void incrementParse(Class<RowType> rowClass, TableData tableDataTxt, int specialId) throws InstantiationException, IllegalAccessException, RowParseFailedException, TableParseFailedException;
+
+    /**
+     * 清空并解析表文本并增加特殊的Id
+     */
+    void clearAndIncrementParse(Class<RowType> rowClass, TableData tableDataTxt, int specialId) throws InstantiationException, IllegalAccessException, RowParseFailedException, TableParseFailedException;
 }

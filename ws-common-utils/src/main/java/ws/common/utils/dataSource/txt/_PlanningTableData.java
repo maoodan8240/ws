@@ -85,11 +85,32 @@ public class _PlanningTableData implements PlanningTableData {
      */
     private void _findChangedTabFiles(File file, List<String> changedFileNames) {
         String fileName = getFileSimpleName(file);
+        String path = file.getPath().replaceAll(file.getName(), "");
         TableData tableData = tableNameToTableData.get(fileName);
         if (tableData == null || (tableData != null && tableData.getLastModifiedTime() != file.lastModified())) {
             LOGGER.debug("Tab文件{}发生变化了，重新加载！", file.getName());
-            _readTabFile(file);
-            changedFileNames.add(fileName);
+            if (!fileName.equals("Table_SceneList")) {
+                String name = fileName.replaceAll("Table_", "");
+                name = name.substring(0, name.lastIndexOf("_"));
+                for (Map.Entry<String, TableData> entry : tableNameToTableData.entrySet()) {
+                    if (!entry.getKey().equals("Table_SceneList")) {
+                        String tableName = entry.getKey().replaceAll("Table_", "");
+                        tableName = tableName.substring(0, tableName.lastIndexOf("_"));
+                        if (tableName.contains(name)) {
+                            File tabFile = new File(path + entry.getKey() + ".tab");
+                            _readTabFile(tabFile);
+                            if (!changedFileNames.contains(tabFile)) {
+                                changedFileNames.add(getFileSimpleName(tabFile));
+                            }
+                        }
+                    }
+                }
+            } else {
+                _readTabFile(file);
+                if (!changedFileNames.contains(fileName)) {
+                    changedFileNames.add(fileName);
+                }
+            }
         }
     }
 
