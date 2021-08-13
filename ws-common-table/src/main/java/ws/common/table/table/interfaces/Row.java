@@ -32,6 +32,13 @@ public interface Row {
     int getId();
 
     /**
+     * 每个剧本的自增id
+     *
+     * @return
+     */
+    int getIdx();
+
+    /**
      * 解析行
      *
      * @param rowNumber            行号
@@ -40,4 +47,5 @@ public interface Row {
      */
     void parse(int rowNumber, Map<String, String> columnNameMaptoValue) throws RowParseFailedException;
 
+    String toString();
 }

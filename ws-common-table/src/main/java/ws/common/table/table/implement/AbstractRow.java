@@ -14,6 +14,8 @@ public abstract class AbstractRow implements Row, Serializable {
 
     private Table<?> table;
     protected int id;
+    protected int idx;
+    protected int dramaId;
 
     @Override
     public Table<?> getTable() {
@@ -30,6 +32,14 @@ public abstract class AbstractRow implements Row, Serializable {
         return id;
     }
 
+    @Override
+    public int getIdx() {
+        return idx;
+    }
+
+    public Integer getDramaId() {
+        return dramaId;
+    }
 
     /**
      * 解析本行
@@ -44,6 +54,8 @@ public abstract class AbstractRow implements Row, Serializable {
         try {
             String idColumnName = table.getTableHeader().getIdColumnName();
             id = CellParser.parseSimpleCell(idColumnName, columnNameMaptoValue, Integer.class);
+            idx = CellParser.parseSimpleCell("Idx", columnNameMaptoValue, Integer.class);
+            dramaId = CellParser.parseSimpleCell("DramaId", columnNameMaptoValue, Integer.class);
             parseRow(columnNameMaptoValue);
         } catch (Exception e) {
             throw new RowParseFailedException(this, rowNumber, e);

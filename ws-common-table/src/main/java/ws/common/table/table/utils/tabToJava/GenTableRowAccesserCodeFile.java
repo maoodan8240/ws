@@ -33,8 +33,6 @@ public class GenTableRowAccesserCodeFile {
 
         Map<String, String> columnNameMaptoDesc = tableHeader.getColumnNameToDesc();
         Map<String, String> columnNameMaptoType = tableHeader.getColumnNameToType();
-        sb.append("/**").append("\n").append(" * " + "int" + " " + "剧本ID").append("\n").append(" */").append("\n")
-                .append("private " + "Integer" + " " + lowerCaseFirstLetter("DramaId") + ";").append("\n");
         for (String columnName : tableHeader.getAllColumnNames()) {
             if (columnName.equals(idColumnName)) {
                 continue;
@@ -50,8 +48,6 @@ public class GenTableRowAccesserCodeFile {
         sb.append("@Override").append("\n");
         sb.append("public void parseRow(Map<String, String> map) throws CellParseFailedException {").append("\n");
         sb.append("// id column = {columnName:\"" + idColumnName + "\", columnDesc:\"" + columnNameMaptoDesc.get(idColumnName) + "\"}").append("\n");
-        sb.append("this.id = CellParser.parseSimpleCell(\"Id\", map, Integer.class);").append("\n");
-        sb.append("this.dramaId = CellParser.parseSimpleCell(\"DramaId\", map, Integer.class);").append("\n");
         for (String columnName : tableHeader.getAllColumnNames()) {
             if (columnName.equals(idColumnName)) {
                 continue;

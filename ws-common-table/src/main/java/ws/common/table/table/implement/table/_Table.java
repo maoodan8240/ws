@@ -103,7 +103,12 @@ public class _Table<RowType extends Row> implements Table<RowType>, Serializable
             columnNameMaptoValueOfOneRow.put("DramaId", specialId + "");
             for (int columnIdx = 0; columnIdx < row.getCells().size(); columnIdx++) {
                 String columnName = tableDataTxt.getHeaderDatas().get(columnIdx).getName();
-                columnNameMaptoValueOfOneRow.put(columnName, row.getCells().get(columnIdx).getCell());// 每行的每个单元格数据
+                if (columnName.equals("Id")) {
+                    columnNameMaptoValueOfOneRow.put("Idx", row.getCells().get(columnIdx).getCell());//每个剧本的自增Id
+                    columnNameMaptoValueOfOneRow.put("Id", row.getCells().get(columnIdx).getCell());//自增Id
+                } else {
+                    columnNameMaptoValueOfOneRow.put(columnName, row.getCells().get(columnIdx).getCell());// 每行的每个单元格数据
+                }
             }
             RowType rowType = (RowType) rowClass.newInstance();
             rowType.setTable(this);
@@ -126,7 +131,8 @@ public class _Table<RowType extends Row> implements Table<RowType>, Serializable
             for (int columnIdx = 0; columnIdx < row.getCells().size(); columnIdx++) {
                 String columnName = tableDataTxt.getHeaderDatas().get(columnIdx).getName();
                 if (columnName.equals("Id")) {
-                    columnNameMaptoValueOfOneRow.put("Id", maxId + "");
+                    columnNameMaptoValueOfOneRow.put("Idx", row.getCells().get(columnIdx).getCell());//每个剧本的自增Id
+                    columnNameMaptoValueOfOneRow.put("Id", maxId + "");//自增Id
                 } else {
                     columnNameMaptoValueOfOneRow.put(columnName, row.getCells().get(columnIdx).getCell());// 每行的每个单元格数据
                 }
@@ -154,7 +160,8 @@ public class _Table<RowType extends Row> implements Table<RowType>, Serializable
             for (int columnIdx = 0; columnIdx < row.getCells().size(); columnIdx++) {
                 String columnName = tableDataTxt.getHeaderDatas().get(columnIdx).getName();
                 if (columnName.equals("Id")) {
-                    columnNameMaptoValueOfOneRow.put("Id", maxId + "");
+                    columnNameMaptoValueOfOneRow.put("Idx", row.getCells().get(columnIdx).getCell());//每个剧本的自增Id
+                    columnNameMaptoValueOfOneRow.put("Id", maxId + "");//自增Id
                 } else {
                     columnNameMaptoValueOfOneRow.put(columnName, row.getCells().get(columnIdx).getCell());// 每行的每个单元格数据
                 }
