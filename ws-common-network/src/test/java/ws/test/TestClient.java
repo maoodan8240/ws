@@ -1,8 +1,6 @@
 package ws.test;
 
 import com.google.protobuf.ByteString;
-import drama.protos.CodesProtos;
-import drama.protos.PlayerProtos;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ws.common.network.client.tcp.TcpClient;
@@ -18,6 +16,8 @@ import ws.common.network.server.interfaces.CodeToMessagePrototype;
 import ws.common.network.server.interfaces.Connection;
 import ws.common.network.server.interfaces.NetworkListener;
 import ws.common.network.utils.EnumUtils;
+import ws.protos.CodesProtos;
+import ws.protos.PlayerProtos;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -78,7 +78,7 @@ public class TestClient {
         File file = new File("D:\\work_space\\xxx.png");
         byte[] bytes2 = file2byte(file);
         byte[] bytes1 = Base64.getEncoder().encode(bytes2);
-        b1.setIcon(ByteString.copyFrom(bytes1));
+        b1.setContentBytes(ByteString.copyFrom(bytes1));
         MessageSendHolder holder1 = new MessageSendHolder(b1.build(), "", new ArrayList<>());
         tcpClient.getConnection().send(holder1);
         Thread.sleep(30000);

@@ -1,6 +1,6 @@
 package ws.common.network.utils;
 
-import drama.protos.MessageHandlerProtos.Header;
+import ws.protos.MessageHandlerProtos.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.util.ReferenceCountUtil;
 import ws.common.network.server.config.MessageFrameConfig;

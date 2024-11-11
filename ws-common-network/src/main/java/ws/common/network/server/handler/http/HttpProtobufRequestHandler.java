@@ -19,7 +19,7 @@ import ws.common.network.server.implement._HttpConnection;
 import ws.common.network.server.interfaces.NetworkContext;
 import ws.common.network.server.interfaces.NetworkHandler;
 import ws.common.network.utils.HttpUtils;
-import drama.protos.MessageHandlerProtos.Header;
+import ws.protos.MessageHandlerProtos.*;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteOrder;

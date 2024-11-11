@@ -2,8 +2,8 @@ package ws.common.network.client.tcp.handler;
 
 import com.google.protobuf.Message;
 import com.google.protobuf.TextFormat;
-import drama.protos.CodesProtos.ProtoCodes;
-import drama.protos.MessageHandlerProtos.Header;
+import ws.protos.CodesProtos.*;
+import ws.protos.MessageHandlerProtos.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.ChannelHandlerContext;

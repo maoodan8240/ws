@@ -20,6 +20,11 @@
             <version>1.2.15</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.typesafe</groupId>
+            <artifactId>config</artifactId>
+            <version>1.4.1</version>
+        </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
         <dependency>
@@ -48,12 +53,18 @@
             <artifactId>ws-protos</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>com.typesafe</groupId>
+            <artifactId>config</artifactId>
+            <version>1.4.1</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
-<!--    <distributionManagement>-->
-    <!--        <repository>-->
-    <!--            <id>nexus-snapshots</id>-->
-    <!--            <url>file:///D:\software\apache-maven-3.6.3\Repository</url>-->
-    <!--        </repository>-->
-    <!--    </distributionManagement>-->
+    <distributionManagement>
+            <repository>
+                <id>nexus-snapshots</id>
+                <url>file:///C:\Users\maoda\.m2\repository</url>
+            </repository>
+        </distributionManagement>
 </project>

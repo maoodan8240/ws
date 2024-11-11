@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import ws.common.network.server.config.MessageFrameConfig;
 import ws.common.network.server.interfaces.NetworkContext;
 import ws.common.network.utils.HandlerUtils;
-import drama.protos.MessageHandlerProtos.Header;
+import ws.protos.MessageHandlerProtos.*;
 
 public class HttpProtobufResponseHandler extends SimpleChannelInboundHandler<FullHttpResponse> {
     private static final Logger LOGGER = LoggerFactory.getLogger(HttpProtobufResponseHandler.class);

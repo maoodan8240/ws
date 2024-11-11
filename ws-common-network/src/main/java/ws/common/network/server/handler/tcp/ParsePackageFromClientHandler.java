@@ -2,7 +2,6 @@ package ws.common.network.server.handler.tcp;
 
 import com.google.protobuf.Message;
 import com.google.protobuf.TextFormat;
-import drama.protos.MessageHandlerProtos.Header;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -12,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import ws.common.network.server.implement._TcpConnection;
 import ws.common.network.server.interfaces.NetworkContext;
 import ws.common.network.server.interfaces.NetworkHandler;
+import ws.protos.MessageHandlerProtos.*;
 
 import java.util.Arrays;
 

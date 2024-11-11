@@ -1,11 +1,5 @@
 package ws.test;
 
-import drama.protos.CodesProtos.ProtoCodes;
-import drama.protos.EnumsProtos.ErrorCodeEnum;
-import drama.protos.MessageHandlerProtos;
-import drama.protos.MessageHandlerProtos.Response;
-import drama.protos.PlayerProtos.Cm_GmCommand;
-import drama.protos.PlayerProtos.Sm_GmCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ws.common.network.server.config.implement._ConnConfig;
@@ -20,6 +14,10 @@ import ws.common.network.server.interfaces.Connection;
 import ws.common.network.server.interfaces.NetworkListener;
 import ws.common.network.server.tcp.TcpServer;
 import ws.common.network.server.tcp._TcpServer;
+import ws.protos.CodesProtos;
+import ws.protos.EnumsProtos;
+import ws.protos.MessageHandlerProtos;
+import ws.protos.PlayerProtos.*;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -54,13 +52,13 @@ public class TestServer {
             public void onReceive(MessageReceiveHolder receiveHolder) {
                 System.out.println("Server 收到消息" + receiveHolder.getMessage());
                 Cm_GmCommand msg = (Cm_GmCommand) receiveHolder.getMessage();
-                byte[] bytes = Base64.getDecoder().decode(msg.getIcon().toByteArray());
+                byte[] bytes = Base64.getDecoder().decode(msg.getContentBytes().toByteArray());
 
                 getFile(bytes, "D:\\work_space", "xx3.png");
-                Response.Builder resp = MessageHandlerProtos.Response.newBuilder();
-                resp.setErrorCode(ErrorCodeEnum.UNKNOWN);
+                MessageHandlerProtos.Response.Builder resp = MessageHandlerProtos.Response.newBuilder();
+                resp.setErrorCode(EnumsProtos.ErrorCodeEnum.UNKNOWN);
                 resp.setResult(true);
-                resp.setMsgCode(ProtoCodes.Code.Sm_GmCommand);
+                resp.setMsgCode(CodesProtos.ProtoCodes.Code.Sm_GmCommand);
                 Sm_GmCommand.Builder b = Sm_GmCommand.newBuilder();
                 b.setAction(Sm_GmCommand.Action.RESP_SEND);
                 b.setContent("回复消息了。。。。");
